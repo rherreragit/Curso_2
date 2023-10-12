@@ -6,6 +6,19 @@ $quaternary-color: #fa9500;
 $font-stack: 'IBM Plex Sans', sans-serif;
 $paragraph-size: 1.5em;
 
+@mixin flexCenter($direction,$content,$align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin buttonStyle{
+   button {
+    background: none;
+    border-style: none;
+   }
+}
 
 body {
     margin: 0;
@@ -16,8 +29,9 @@ body {
 
 nav {
     width: auto;
-    display: flex;
-    justify-content: space-between;
+    @include flexCenter(row, space-between, center);
+    //display: flex;
+    //justify-content: space-between;
     color: $primary-text-color;
     padding: 15px;
 
@@ -28,11 +42,8 @@ nav {
     .icons{
         display: flex;
         gap: 15px;
-        
-        button {
-           background: none;
-           border-style: none;
-        }
+        @include buttonStyle;
+
     }
 }
 
@@ -42,11 +53,14 @@ article {
     padding-left: 45px;
     padding-right: 45px;
     padding-top: 70px;
-    display: flex;
-    justify-content: space-between;
+
+    @include flexCenter(row, space-between,center);
+    //display: flex;
+    //justify-content: space-between;
     .impact-section{
-        display: flex;
-        flex-direction: column;
+        //display: flex;
+        //flex-direction: column;
+        @include flexCenter(column, s´pace-evenly, flex-start);
         padding-top: 50px;
         gap: 25px;
     }
@@ -59,6 +73,7 @@ article {
     p {
         font-size: $paragraph-size;
     }
+    @include buttonStyle;
     button{
         width: 12vw;
         padding: 20px;
@@ -90,12 +105,13 @@ section{
             padding-bottom: 60px;
         }
         .card-section{
-            display: flex;
+            //display: flex;
+            //justify-content: center;
+            //align-items: center;
             width: auto;
             height: auto;
-            justify-content: center;
-            flex-wrap: wrap;
-            align-items: center;
+            @include flexCenter(row,space-evenly ,center );
+            flex-wrap: wrap;            
             column-gap: 200px; 
             row-gap: 80px;
         }
